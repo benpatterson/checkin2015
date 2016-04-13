@@ -1,4 +1,6 @@
 from django.test import TestCase
+from survey.forms import LegForm1, MakeLegs_NormalFW
+from survey.forms import Commutersurvey, Leg
 import models
 
 
@@ -16,6 +18,17 @@ class ModeTests(TestCase):
         self.assertEqual(bike.met, 50.0)
         self.assertEqual(bike.green, True)
 
-class LegTests(TestCase):
 
-    pass
+class LegFormTests(TestCase):
+
+    def setUp(self):
+        pass
+
+    def test_empty_form_leg_1(self):
+        form = LegForm1(data={})
+        self.assertFalse(form.is_valid())
+
+    # def test_empty_MakeLegs_NormalFW(self):
+    #     hi = MakeLegs_NormalFW(instance=Commutersurvey(), prefix='nfw')
+    #     hi.is_valid()
+    #

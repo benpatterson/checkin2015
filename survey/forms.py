@@ -219,11 +219,11 @@ class LegForm4(ModelForm):
             'Please tell us how you did, or will, travel.')
 
 
-MakeLegs_WRTW = inlineformset_factory(Commutersurvey, Leg, form=LegForm3, extra=1, max_num=10, can_delete=True)
+MakeLegs_WRTW = inlineformset_factory(Commutersurvey, Leg, form=LegForm3, extra=1, max_num=10,  min_num=1, can_delete=True)
 MakeLegs_WRFW = inlineformset_factory(Commutersurvey, Leg, form=LegForm4,
-                                      extra=1, max_num=10, can_delete=True)
+                                      extra=1, max_num=10, min_num=1, can_delete=True)
 MakeLegs_NormalTW = inlineformset_factory(Commutersurvey, Leg, form=LegForm1,
-                                          extra=1, max_num=10, can_delete=True)
+                                          extra=1, max_num=10, min_num=1, can_delete=True)
 MakeLegs_NormalFW = inlineformset_factory(Commutersurvey, Leg, form=LegForm2,
-                                          extra=1, max_num=10, can_delete=True)
+                                          extra=1, max_num=10, min_num=1, can_delete=True)
 

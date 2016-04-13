@@ -68,10 +68,10 @@ def add_checkin(request):
                 if attr in extra_commute_form.cleaned_data:
                     request.session[attr] = extra_commute_form.cleaned_data[attr]
 
-            leg_formset_NormalTW = MakeLegs_NormalTW(request.POST, instance=commutersurvey, prefix='ntw')
-            leg_formset_NormalFW = MakeLegs_NormalFW(request.POST, instance=commutersurvey, prefix='nfw')
-            leg_formset_WRTW = MakeLegs_WRTW(request.POST, instance=commutersurvey, prefix='wtw')
-            leg_formset_WRFW = MakeLegs_WRFW(request.POST, instance=commutersurvey, prefix='wfw')
+            leg_formset_NormalTW = MakeLegs_NormalTW(request.POST, instance=Commutersurvey(), prefix='ntw')
+            leg_formset_NormalFW = MakeLegs_NormalFW(request.POST, instance=Commutersurvey(), prefix='nfw')
+            leg_formset_WRTW = MakeLegs_WRTW(request.POST, instance=Commutersurvey(), prefix='wtw')
+            leg_formset_WRFW = MakeLegs_WRFW(request.POST, instance=Commutersurvey(), prefix='wfw')
 
             # finally! we're good to go.
             if (leg_formset_WRTW.is_valid() and
@@ -84,6 +84,7 @@ def add_checkin(request):
                 leg_formset_WRFW.save()
                 leg_formset_NormalTW.save()
                 leg_formset_NormalFW.save()
+                # from nose.tools import set_trace; set_trace()
                 # very simple email sending - replace using Mandrill API later
                 name = commutersurvey.name or 'Supporter'
                 subject = ('Walk/Ride Day ' +
